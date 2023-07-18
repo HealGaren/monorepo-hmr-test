@@ -1,10 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
 
     // Production 빌드 시, 리액트 코드 트랜스파일링 할 시작점 설정.
-    entry: './src/index.jsx',
+    entry: ['./src/index.jsx'],
+
+    target: ["web", "es5"],
+
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index_bundle.js'
@@ -32,7 +37,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "./index.html",
             template: path.join(__dirname, 'public/index.html')
-        })
+        }),
+        ...isDevelopment ? [new ReactRefreshWebpackPlugin()] : []
     ],
 
     // webpack Develop 모드 실행 시, 사용될 static 파일들 경로와 관리 방식 설정.

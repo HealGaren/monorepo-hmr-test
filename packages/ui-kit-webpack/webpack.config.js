@@ -9,7 +9,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'main.cjs',
+        filename: 'index.cjs',
         library: {
             name: 'ui-kit-webpack',
             type: 'umd'
