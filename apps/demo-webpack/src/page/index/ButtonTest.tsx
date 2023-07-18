@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button} from "ui-kit-webpack";
+import {Button} from "ui-kit-vite";
 
 export const ButtonTest = () => {
     const [count, setCount] = useState(0);
